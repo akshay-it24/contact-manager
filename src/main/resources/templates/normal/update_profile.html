@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<section>
+		<div class="card" style="margin-right: 30px;margin-left: 30px">
+		
+			<div class="card-body" th:if="${user}">
+				
+				<h1 class="text-center">Update Your Profile</h1>
+				
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-8 offset-md-2">
+							<form action="#" th:action="@{/user/update-profile}" class="mt-2" th:object="${user}" enctype="multipart/form-data" method="post">
+								
+								<input type="hidden" name="id" th:value="${user.id}" />
+								
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fa fa-plus" style="height: 20px"></i>
+										</div>
+									</div>
+									<input th:value="${user.name}" required type="text" id="firstname" name="name" style="height: 34px" placeholder="Enter Name here.." class="form-control"/>
+								</div>
+								
+								
+								<div class="input-group mt-3" >
+									<div class="input-group-prepend">
+										<div class="input-group-text" style="height: 34px">
+											<span>@</span>
+										</div>
+									</div>
+									<input th:value="${user.email}" required type="email" id="email" name="email" style="height: 34px" placeholder="Enter Email here.." class="form-control"/>
+								</div>
+								
+								
+								<div class="form-group mt-3">
+									<textarea th:text="${user.about}" name="about" id="mytextarea" placeholder="Enter about here.." class="form-control" rows="10"></textarea>
+								</div>
+								
+								<div class="container text-center mt-3">
+									<img style="width: 200px;height: 200px" th:src="@{'/image/'+${user.imageUrl}}" alt="" class="img-fluid profile_image" />
+								</div>
+								<p class="text-secondary">Choose new profile picture..</p>
+								<div class="custom-file mt-3">
+									<input type="file" name="profileImage" />
+								</div>
+								
+								<div class="container text-center mt-3">
+									<button class="btn btn-outline-primary">Update Profile</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	</section>
+</body>
+</html>

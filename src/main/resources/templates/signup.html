@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="my-card mt-3">
+					
+						<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert" role="alert">
+							<p th:text="${session.message.content}"></p>
+							<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+						</div>
+					
+						<div class="container text-center">
+							<img width="80px" th:src="@{/image/registration.png}" alt="" />
+						</div>
+						<h1 class="text-center display-block">
+							Register here..
+						</h1>
+						
+						<form th:action="@{/doSignup}" method="post" th:object="${user}">
+							
+							<div class="mb-3 form-group">
+							    <label for="name" class="form-label">Your Name</label>
+							    <input name="name" th:value="${user.name}" type="text" class="form-control" id="name" placeholder="Enter here">
+							 </div>
+							
+							<div class="mb-3 form-group">
+							    <label for="email" class="form-label">Your Email</label>
+							    <input name="email" th:value="${user.email}" type="email" class="form-control" id="email" placeholder="Enter here" aria-describedby="emailHelp">
+							 </div>
+							 
+							 <div class="mb-3 form-group">
+							    <label for="password" class="form-label">Your Password</label>
+							    <input name="password" th:value="${user.password}" type="password" class="form-control" placeholder="Enter here" id="password">
+							 </div>
+							 <div class="form-group mb-3">
+							 	<textarea name="about" th:text="${user.about}" rows="6" placeholder="Enter something yourself...." class="form-control" ></textarea>
+							 </div>
+							 
+							 <div class="form-group form-check">
+							 	<input name="aggrement" type="checkbox" class="form-check-input" id="aggrement" />
+							 	<label for="aggrement">Accept terms and conditions.</label>
+							 </div>
+							
+							 <div class="text-center">
+							 	<button type="submit" class="btn bg-primary text-white">Submit</button>
+							 	<button type="reset" class="btn btn-danger text-white">Reset</button>
+							 </div>
+							  
+						</form>
+							<div class="container my-1">
+                                <a th:href="@{/login}" class="text-info" >Login here</a>
+                             </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
