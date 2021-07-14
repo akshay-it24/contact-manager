@@ -6,6 +6,8 @@
 <ul>
   <li>Spring Boot</li>
   <li>Spring Security</li>
+  <li>Hibernate</li>
+  <li>MySqk</li>
   <li>Html</li>
   <li>CSS</li>
   <li>JavaScript</li>
