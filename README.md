@@ -1,4 +1,4 @@
-# contact-manager
+<h1>contact-manager</h1>
 
   A web based application which is used to store contact and infromation of family, friends and colleagues.
 
